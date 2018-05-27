@@ -19,17 +19,25 @@
 </template>
 
 <script type="text/ecmascript-6">
-import header from "./components/header/header.vue";
+import { urlParse } from 'common/js/util';
+import header from "components/header/header";
 
 const ERR_OK = 0;
+const debug = process.env.NODE_ENV !== 'production';
 export default {
   data() {
-    return {
-      seller: {}
-    };
-  },
+      return {
+        seller: {
+          id: (() => {
+            let queryParam = urlParse();
+            return queryParam.id;
+          })()
+        }
+      };
+    },
   created() {
-    this.$http.get("api/seller").then((response) => {
+    const url = debug ? '/api/seller' : 'https://zc95.github.io/demo/vue-sell/api/seller.json';
+    this.$http.get(url + '?id=' + this.seller.id).then((response) => {
       response = response.body;
       if(response.errno===ERR_OK){
         this.seller = response.data;
