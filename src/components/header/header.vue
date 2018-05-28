@@ -272,7 +272,7 @@ export default {
     background: rgba(7, 17, 27, 0.8);
 
     &.fade-enter-active, &.fade-leave-active {
-      transition: all 0.5s;
+      transition: all 0.3s;
     }
 
     &.fade-enter, &.fade-leave-active {

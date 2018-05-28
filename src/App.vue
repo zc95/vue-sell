@@ -12,9 +12,11 @@
         <router-link to="/seller">商家</router-link>
       </div>
     </div>
+    <transition :name="transitionName">
     <keep-alive>
-      <router-view></router-view>
+            <router-view class="transitionBody"></router-view>
     </keep-alive>
+    </transition>
   </div>
 </template>
 
@@ -32,7 +34,8 @@ export default {
             let queryParam = urlParse();
             return queryParam.id;
           })()
-        }
+        },
+        transitionName: 'transitionLeft'
       };
     },
   created() {
@@ -46,12 +49,33 @@ export default {
   },
   components: {
     "v-header": header
-  }
+  },
+  watch: {  
+    '$route' (to, from) {  
+      const arr = ['/goods','/ratings','/seller'];
+      const compare = arr.indexOf(to.path)>arr.indexOf(from.path);
+      this.transitionName = compare ? 'transitionLeft' : 'transitionRight';
+    }  
+  }   
 };
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
 @import './common/stylus/mixin.styl';
+.transitionBody{
+  transition: all 0.15s ease;
+}
+.transitionLeft-enter,
+.transitionRight-leave-active {
+    -webkit-transform: translate(100%, 0);  
+    transform: translate(100%, 0);  
+}
+
+.transitionLeft-leave-active,
+.transitionRight-enter {
+    -webkit-transform: translate(-100%, 0);  
+    transform: translate(-100%, 0);  
+}
 
 .tab {
   display: flex;
