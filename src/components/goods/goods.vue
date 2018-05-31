@@ -96,7 +96,7 @@
     created() {
       this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
 
-      const url = debug ? '/api/goods' : 'http://ustbhuangyi.com/sell/api/goods';
+      const url = debug ? '/api/goods' : 'https://zc95.github.io/demo/vue-sell/api/goods.json';
       this.$http.get(url).then((response) => {
         response = response.body;
         if (response.errno === ERR_OK) {
