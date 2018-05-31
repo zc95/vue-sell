@@ -186,7 +186,7 @@
         if (this.totalPrice < this.minPrice) {
           return;
         }
-        window.alert(`支付${this.totalPrice}元`);
+        window.alert(`支付${this.totalPrice+this.deliveryPrice}元`);
       },
       addFood(target) {
         this.drop(target);
@@ -281,12 +281,12 @@
             position: absolute
             top: 0
             right: 0
-            width: 24px
-            height: 16px
-            line-height: 16px
+            width: 25px
+            height: 18px
+            line-height: 18px
             text-align: center
-            border-radius: 16px
-            font-size: 9px
+            border-radius: 18px
+            font-size: 12px
             font-weight: 700
             color: #fff
             background: rgb(240, 20, 20)
@@ -308,7 +308,7 @@
           vertical-align: top
           margin: 12px 0 0 12px
           line-height: 24px
-          font-size: 10px
+          font-size: 12px
       .content-right
         flex: 0 0 105px
         width: 105px
@@ -347,7 +347,7 @@
       width: 100%
       transform: translate3d(0, -100%, 0)
       &.fold-enter-active, &.fold-leave-active
-        transition: all 0.5s
+        transition: all 0.3s
       &.fold-enter, &.fold-leave-active
         transform: translate3d(0, 0, 0)
       .list-header
@@ -403,7 +403,7 @@
     opacity: 1
     background: rgba(7, 17, 27, 0.6)
     &.fade-enter-active, &.fade-leave-active
-      transition: all 0.5s
+      transition: all 0.3s
     &.fade-enter, &.fade-leave-active
       opacity: 0
       background: rgba(7, 17, 27, 0)
