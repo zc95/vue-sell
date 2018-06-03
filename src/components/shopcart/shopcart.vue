@@ -52,10 +52,6 @@
     <transition name="fade">
       <div class="list-mask" @click="hideList" v-show="listShow"></div>
     </transition>
-
-    <transition name="fade">
-      <div class="pay-wrapper" v-show="payShow"></div>
-    </transition>
   </div>
 </template>
 
